@@ -462,6 +462,7 @@ endif  # need_compile_java
 cleantarget := clean-$(LOCAL_MODULE)
 $(cleantarget) : PRIVATE_MODULE := $(LOCAL_MODULE)
 $(cleantarget) : PRIVATE_CLEAN_FILES := \
+    $(PRIVATE_CLEAN_FILES) \
     $(LOCAL_BUILT_MODULE) \
     $(LOCAL_INSTALLED_MODULE) \
     $(intermediates)
@@ -539,7 +540,7 @@ ifdef LOCAL_DEX_PREOPT
 installed_odex := $(basename $(LOCAL_INSTALLED_MODULE)).odex
 built_odex := $(basename $(LOCAL_BUILT_MODULE)).odex
 $(installed_odex) : $(built_odex) $(LOCAL_BUILT_MODULE) | $(ACP)
-	@echo -e ${CL_CYN}"Install: $@"${CL_RST}
+	@echo "Install: $@"
 	$(copy-file-to-target)
 
 $(LOCAL_INSTALLED_MODULE) : $(installed_odex)
