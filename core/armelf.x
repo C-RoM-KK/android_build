@@ -10,7 +10,7 @@ SECTIONS
 {
   /* Read-only sections, merged into text segment: */
 /*  PROVIDE (__executable_start = 0x8000); . = 0x8000; */
-. = 0x8000 + SIZEOF_HEADERS; 
+. = 0x8000 + SIZEOF_HEADERS;
   .interp         : { *(.interp) }
   .hash           : { *(.hash) }
   .dynsym         : { *(.dynsym) }
@@ -82,8 +82,8 @@ SECTIONS
   .eh_frame       : ONLY_IF_RW { KEEP (*(.eh_frame)) }
   .gcc_except_table   : ONLY_IF_RW { KEEP (*(.gcc_except_table)) *(.gcc_except_table.*) }
   /* Thread Local Storage sections  */
-  .tdata	  : { *(.tdata .tdata.* .gnu.linkonce.td.*) }
-  .tbss		  : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
+  .tdata  : { *(.tdata .tdata.* .gnu.linkonce.td.*) }
+  .tbss  : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
   /* Ensure the __preinit_array_start label is properly aligned.  We
      could instead move the label definition inside the section, but
      the linker would then create the section even if it turns out to
@@ -188,7 +188,7 @@ SECTIONS
   .debug_funcnames 0 : { *(.debug_funcnames) }
   .debug_typenames 0 : { *(.debug_typenames) }
   .debug_varnames  0 : { *(.debug_varnames) }
-  /* Adding the word ABSOLUTE below, so that the _stack below won't float 
+  /* Adding the word ABSOLUTE below, so that the _stack below won't float
      into a random section. If _stack is not absolutely with .stack section,
      we saw that sometimes _stack got inserted into the .debug_frame section
      because it's processed by the linker at that moment. As a result, _stack
