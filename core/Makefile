@@ -1409,7 +1409,7 @@ BOOT_ZIP_FROM_IMAGE_SCRIPT := ./build/tools/releasetools/boot_flash_from_image
 KERNEL_PATH := $(TARGET_KERNEL_SOURCE)/arch/arm/configs/$(TARGET_KERNEL_CONFIG)
 #BOOT_ZIP_OUT_FILE := C-RoM-Kernel-$(DEVICE).zip
 
-ifeq ($(CROM_BUILD),true)
+ifneq ($(CROM_BUILD),)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
