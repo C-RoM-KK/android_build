@@ -34,16 +34,16 @@ except ImportError:
 
 # Config
 # set this to the default remote to use in repo
-default_rem = "xr"
+default_rem = "crm"
 # set this to the default revision to use (branch/tag name)
 default_rev = "kitkat"
 # set this to the remote that you use for projects from your team repos
 # example fetch="https://github.com/omnirom"
-default_team_rem = "xr"
+default_team_rem = "gh"
 # this shouldn't change unless google makes changes
 local_manifest_dir = ".repo/local_manifests"
 # change this to your name on github (or equivalent hosting)
-android_team = "X-ROM"
+android_team = "C-RoM-KK"
 
 
 def check_repo_exists(git_data):
@@ -85,7 +85,7 @@ def get_device_url(git_data):
                     break
 
     if device_url:
-        return device_url
+        return "{}/{}".format(android_team, device_url)
     raise Exception("{} not found in {} Github, exiting "
                     "roomservice".format(device, android_team))
 
@@ -177,7 +177,7 @@ def write_to_manifest(manifest):
 
     with open('/'.join([local_manifest_dir, "roomservice.xml"]), 'w') as f:
         f.write(raw_xml)
-    print("wrote the new roomservice manifest")
+    print("Written to local device manifests")
 
 
 def parse_device_from_manifest(device):
@@ -200,7 +200,7 @@ def parse_device_from_folder(device):
     elif len(search) == 1:
         location = search[0]
     else:
-        print("you device can't be found in device sources..")
+        print("Your device was not found. Attempting to retrieve device repository from C-RoM Github..")
         location = parse_device_from_manifest(device)
     return location
 
