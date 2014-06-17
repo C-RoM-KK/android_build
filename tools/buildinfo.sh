@@ -43,6 +43,4 @@ if [ "$TARGET_UNIFIED_DEVICE" == "" ] ; then
 fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 
-echo "ro.crom.device=$CROM_DEVICE"
-
 echo "# end build properties"
